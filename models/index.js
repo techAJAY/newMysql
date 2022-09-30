@@ -22,6 +22,7 @@ const sequelize = new Sequelize('sequelize','root', '', {
     db.sequelize = sequelize
 
     db.users = require('./users')(sequelize, DataTypes)
+    db.salary = require('./salary')(sequelize, DataTypes)
 
     db.sequelize.sync({force:false})   //it can delete all table data:// match:/sequlize$/
     .then(()=>{

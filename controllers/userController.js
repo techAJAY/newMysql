@@ -16,7 +16,7 @@ exports.createUser = async(req,res)=>{
     gender:gender,
     password:password,
   })
-  console.log(user);
+  
   
   const getUser =await user.save();
   return res.status(201).send({message:"user created successfully",data:getUser})
@@ -46,7 +46,8 @@ exports.getUser = async (req,res)=>{
 //get all users
 exports.getAllUser = async (req,res)=>{
   try{
-
+    
+   
     const user = await User.findAll();
     return res.status(200).send({message:"users get successfully",data:user})
 
@@ -56,7 +57,22 @@ exports.getAllUser = async (req,res)=>{
   
 }
 
+
+//get all users by query
+// exports.getAllUser = async (req,res)=>{
+//   try{
+    
+   
+//     const user = await User.findAll({ where: {gender:req.query.gender } });
+//     return res.status(200).send({message:"users get successfully",data:user})
+
+//   }catch(err){
+//     return res.status(500).send({status:false,message:err.message})
+//   }
+
   
+
+
 
 //update users
 exports.updateUser = async (req,res)=>{

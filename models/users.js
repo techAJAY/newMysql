@@ -1,6 +1,4 @@
 const { Sequelize, DataTypes } = require("sequelize");
-const bcrypt  = require('bcrypt')
-const { gzipSync, gunzipSync } = require('zlib');
 
  module.exports = (Sequelize, DataType)=>{
   const Users = Sequelize.define('users',{
