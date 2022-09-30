@@ -7,14 +7,16 @@
 exports.createUser = async(req,res)=>{
   try{
 
-  const {name,email,mobile,gender} = req.body;
+  const {name,email,mobile,gender,password} = req.body;
 
   const user = new User({
     name:name,
     email:email,
     mobile:mobile,
     gender:gender,
+    password:password,
   })
+  console.log(user);
   
   const getUser =await user.save();
   return res.status(201).send({message:"user created successfully",data:getUser})

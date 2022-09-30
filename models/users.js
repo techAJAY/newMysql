@@ -1,4 +1,6 @@
 const { Sequelize, DataTypes } = require("sequelize");
+const bcrypt  = require('bcrypt')
+const { gzipSync, gunzipSync } = require('zlib');
 
  module.exports = (Sequelize, DataType)=>{
   const Users = Sequelize.define('users',{
@@ -12,17 +14,38 @@ const { Sequelize, DataTypes } = require("sequelize");
     name:{
       type:DataTypes.STRING(20),
       allowNull: false,
+      // set(value){
+
+      //   this.setDataValue('name',value+' sahu ')
+      // },
+      // get() {
+      //   const rawValue = this.getDataValue('name')+' evd ' ;
+      //   return rawValue ? rawValue.toUpperCase() : null;
+      // }
       
     },
     email:{
       type:DataTypes.STRING(20),
-      //allowNull: false,
+      allowNull: false,
       //defaultValue:'ajay@gmail.com'
+      unique:true,
+      isEmail: true, 
+     
     },
+    password:{
+      type:DataTypes.STRING(20),
+      allowNull: false,
+    },
+    
     gender:{
       type:DataTypes.STRING(20),
       //defaultValue:'male',
-      //allowNull: false,
+      allowNull: false,
+      validate:{
+        isIn: [['male', 'female']], 
+      }
+      
+      
     },
     
     mobile:{
@@ -34,6 +57,7 @@ const { Sequelize, DataTypes } = require("sequelize");
       //   isInt: { args: true, msg: "You must enter Phone Number" },
       // }
     },
+
 
 
   },{
