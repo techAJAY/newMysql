@@ -16,6 +16,9 @@ const { Sequelize, DataTypes } = require("sequelize");
     
     user_id:{
         type: DataTypes.INTEGER,
+        unique:true,
+        //allowNull: false,
+        //foreignKey:true,
        
       },
 
