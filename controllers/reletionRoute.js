@@ -11,10 +11,10 @@ const salary = require('../models/salary');
       const id = req.params.id
       const user = await User.findAll({
         attributes: ['name', 'gender','mobile'],
-        
-        include:[{
 
+        include:[{
           model:Salary,
+          as:'SALARY DETAILS',
           attributes:['salary'],
         }],
         where:{user_id:id}

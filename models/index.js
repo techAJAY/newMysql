@@ -25,8 +25,8 @@ const sequelize = new Sequelize('sequelize','root', '', {
     db.salary = require('./salary')(sequelize, DataTypes)
 
 
-    db.users.hasOne(db.salary,{foreignKey:'user_id'})
-    db.salary.belongsTo(db.users,{foreignKey:'user_id'})
+    db.users.hasOne(db.salary,{foreignKey:'user_id', as:'SALARY DETAILS'})
+    db.salary.belongsTo(db.users,{foreignKey:'user_id', as:'SALARY DETAILS'})
 
 
     db.sequelize.sync({force:false})   //it can delete all table data:// match:/sequlize$/
