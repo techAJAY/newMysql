@@ -6,8 +6,8 @@ const cors = require('cors')
 const mysql = require('mysql2');
 const dbConn = require('./config/db.config')
 const userRouter = require('./routes/userRoute')
-const salaryRouter = require('./routes/salaryRoute')
-const reletionRoute = require('./routes/reletionRoute')
+const postRoute = require('./routes/postRoute')
+const relationRoute = require('./routes/relationRoute')
 
 const port = process.env.PORT || 3000
 
@@ -30,9 +30,9 @@ app.use('/test',async (req,res)=>{
 app.use(userRouter)
 
 //salary router
-app.use(salaryRouter)
+app.use(postRoute)
 
-app.use(reletionRoute)
+app.use(relationRoute)
 
 
 

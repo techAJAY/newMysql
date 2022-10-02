@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
- module.exports = (Sequelize, DataType)=>{
+ module.exports = (Sequelize, DataTypes)=>{
   const Users = Sequelize.define('users',{
       user_id:{
         type: DataTypes.INTEGER,
@@ -12,9 +12,10 @@ const { Sequelize, DataTypes } = require("sequelize");
     name:{
       type:DataTypes.STRING(20),
       allowNull: false,
+      trim:true,
       // set(value){
 
-      //   this.setDataValue('name',value+' sahu ')
+      //   this.setDataValue('name',value+'Sahu ')
       // },
       // get() {
       //   const rawValue = this.getDataValue('name')+' evd ' ;
@@ -47,7 +48,7 @@ const { Sequelize, DataTypes } = require("sequelize");
     },
     
     mobile:{
-      type: DataType.STRING(10),
+      type:DataTypes.STRING(10),
       //allowNull: false,
       // validate: {
       //   notNull: { args: true, msg: "You must enter Phone Number" },

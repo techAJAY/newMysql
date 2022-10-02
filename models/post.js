@@ -1,22 +1,30 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
- module.exports = (Sequelize, DataType)=>{
-  const Salary = Sequelize.define('salaries',{
-    salary_id:{
+ module.exports = (Sequelize, DataTypes)=>{
+  const Post = Sequelize.define('post',{
+    post_id:{
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false    //required:true
     },
     
-    salary:{
-      type:DataTypes.INTEGER(20),
+    postName:{
+      type:DataTypes.STRING(20),
       
     },
-    
+    title:{
+      type:DataTypes.STRING(20),
+      
+    },
+    content:{
+      type:DataTypes.STRING(20),
+      
+    },
+
     user_id:{
         type: DataTypes.INTEGER,
-        unique:true,
+        //unique:true,
         //allowNull: false,
         //foreignKey:true,
        
@@ -28,6 +36,6 @@ const { Sequelize, DataTypes } = require("sequelize");
     //tableName:'usertaable'
   })
 
-  return Salary;
+  return Post;
  }
 

@@ -1,5 +1,6 @@
 const dbConfig = require("../config/db.config");
 const {Sequelize,DataTypes} = require("sequelize");
+const { DB } = require("../config/db.config");
 
 const sequelize = new Sequelize('sequelize','root', '', {
   host:'localhost',
@@ -22,16 +23,28 @@ const sequelize = new Sequelize('sequelize','root', '', {
     db.sequelize = sequelize
 
     db.users = require('./users')(sequelize, DataTypes)
-    db.salary = require('./salary')(sequelize, DataTypes)
+    db.post = require('./post')(sequelize, DataTypes)
+    db.post_tag = require('./post_tag')(sequelize, DataTypes)
+    db.tags = require('./tag')(sequelize, DataTypes)
+
+    //one to one
+    // db.users.hasOne(db.post,{foreignKey:'user_id', as:'POST DETAILS'})
+    // db.post.belongsTo(db.users,{foreignKey:'user_id', as:'USER iNFO'})
 
 
-    db.users.hasOne(db.salary,{foreignKey:'user_id', as:'SALARY DETAILS'})
-    db.salary.belongsTo(db.users,{foreignKey:'user_id', as:'SALARY DETAILS'})
+    //one to many
+    //db.users.hasMany(db.post,{foreignKey:'user_id', as:'POST DETAILS'})
+    db.post.belongsTo(db.users,{foreignKey:'user_id', as:'USER iNFO'})
+
+    //many TO many
+    db.users.hasMany(db.post,{foreignKey:'user_id', as:'POST DETAILS'})
+    db.post.belongsToMany(db.tags,{through:'post_tag',foreignKey:'post_Id'})
+    db.tags.belongsToMany(db.post,{through:'post_tag',foreignKey:'tag_Id'})
 
 
     db.sequelize.sync({force:false})   //it can delete all table data:// match:/sequlize$/
     .then(()=>{
-        console.log('resync');
+        console.log('sync again');
     })
 
    module.exports = db;
