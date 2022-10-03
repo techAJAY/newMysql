@@ -4,7 +4,7 @@ const post_tag  = db.post_tag;
 
 
 
-
+//create postTags
 exports.createPostTag = async(req,res)=>{
     try{
   
@@ -26,7 +26,7 @@ exports.createPostTag = async(req,res)=>{
   }
   
 
-  //get all users
+  //get all postTags
 exports.getAllPostTags = async (req,res)=>{
     try{
       const post_tag = await post_tag.findAll({

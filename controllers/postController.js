@@ -4,14 +4,14 @@ const db  = require('../models/index')
 
 
 
-
+//create post
 exports.createPost = async(req,res)=>{
     try{
   
     const {postName,title,content,user_id} = req.body;
 
     const post = new Post({
-      post_Id:postName,
+      postName:postName,
       title:title,
       content:content,
       user_id:user_id
@@ -28,7 +28,7 @@ exports.createPost = async(req,res)=>{
   }
   
 
-//get all users
+//get all post
 exports.getAllPOST = async (req,res)=>{
   try{
     

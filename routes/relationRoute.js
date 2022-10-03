@@ -10,5 +10,12 @@ router.get('/BelongsTo/:id',relationController.BelongsTo)
 //MANY TO MAny routes
 router.get('/manyToMany',relationController.manyToMany)
 
+//polymorphic ONE TO MANY
+router.get('/PolymorphicHashMany',relationController.PolymorphicHashMany)
+
+//polymorphic ONE TO MANY
+router.get('/PolymorphicManyToMany',relationController.PolymorphicManyToMany)
+
+
 
 module.exports = router

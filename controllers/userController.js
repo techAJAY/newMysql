@@ -7,7 +7,7 @@
 exports.createUser = async(req,res)=>{
   try{
 
-  const {name,email,mobile,gender,password} = req.body;
+  const {name,email,mobile,gender,password,status} = req.body;
 
   const user = new User({
     name:name,
@@ -15,6 +15,7 @@ exports.createUser = async(req,res)=>{
     mobile:mobile,
     gender:gender,
     password:password,
+    status:status,
   })
   
   
@@ -48,7 +49,9 @@ exports.getAllUser = async (req,res)=>{
   try{
     
    
-    const user = await User.findAll();
+    const user = await User.findAll({
+      //where:{status:1}
+    });
     return res.status(200).send({message:"users get successfully",data:user})
 
   }catch(err){

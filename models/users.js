@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const { Sequelize, DataTypes, BOOLEAN } = require("sequelize");
 
  module.exports = (Sequelize, DataTypes)=>{
   const Users = Sequelize.define('users',{
@@ -49,7 +49,7 @@ const { Sequelize, DataTypes } = require("sequelize");
     
     mobile:{
       type:DataTypes.STRING(10),
-      //allowNull: false,
+      allowNull: false,
       // validate: {
       //   notNull: { args: true, msg: "You must enter Phone Number" },
       //   len: { args: [11,11], msg: 'Phone Number is invalid' },
@@ -57,9 +57,14 @@ const { Sequelize, DataTypes } = require("sequelize");
       // }
     },
 
+    status:{
+      type:BOOLEAN(2),
+    }
+
 
 
   },{
+    underscored:true,  //IT AUTOMATICALLY CHECK UNDERSCORE ID
     //tableName:'usertaable'
   })
 

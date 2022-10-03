@@ -5,7 +5,7 @@ const tags  = db.tags;
 
 
 
-
+//create tags
 exports.createTags = async(req,res)=>{
     try{
   
@@ -26,7 +26,7 @@ exports.createTags = async(req,res)=>{
   }
   
 
-//get all TaGS
+//get all tags
 exports.getAllTags = async (req,res)=>{
   try{
     
