@@ -1,5 +1,5 @@
 const db  = require('../models/index')
-const post_tag  = db.post_tag;
+const Post_tag  = db.post_tag;
  
 
 
@@ -10,7 +10,7 @@ exports.createPostTag = async(req,res)=>{
   
     const {postId,tagId} = req.body;
 
-    const Post_tag = new post_tag({
+    const Post_tag = new Post_tag({
         post_Id:postId,
         tag_Id:tagId,
     })
@@ -29,7 +29,7 @@ exports.createPostTag = async(req,res)=>{
   //get all postTags
 exports.getAllPostTags = async (req,res)=>{
     try{
-      const post_tag = await post_tag.findAll({
+      const post_tag = await Post_tag.findAll({
         
       })
 

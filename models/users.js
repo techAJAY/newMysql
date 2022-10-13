@@ -64,7 +64,7 @@ const { Sequelize, DataTypes, BOOLEAN } = require("sequelize");
 
 
   },{
-    underscored:true,  //IT AUTOMATICALLY CHECK UNDERSCORE ID
+    //underscored:true,  //IT AUTOMATICALLY CHECK UNDERSCORE ID
     //tableName:'usertaable'
   })
 

@@ -131,7 +131,7 @@ exports.PolymorphicHashMany = async (req,res)=>{
       attributes:['title','text'],
       include:[{
         model:comment,
-        attributes:['title','commentId','commentType'],
+        attributes:['title','commentType'],
       }]
     });
     
