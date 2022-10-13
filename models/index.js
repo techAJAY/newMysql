@@ -1,7 +1,8 @@
 const dbConfig = require("../config/db.config");
 const {Sequelize,DataTypes} = require("sequelize");
-const { DB } = require("../config/db.config");
 
+
+//database connection
 const sequelize = new Sequelize('sequelize','root', '', {
   host:'localhost',
   dialect:'mysql',
@@ -23,7 +24,6 @@ const sequelize = new Sequelize('sequelize','root', '', {
     db.sequelize = sequelize
 
     db.users = require('./users')(sequelize, DataTypes)
-   
     db.post = require('./post')(sequelize, DataTypes)
     db.post_tag = require('./post_tag')(sequelize, DataTypes)
     db.tags = require('./tag')(sequelize, DataTypes)
@@ -62,10 +62,10 @@ const sequelize = new Sequelize('sequelize','root', '', {
        attributes: ['PostName','title','content'], 
      })
 
+
   
      //------------IMAGE,VIDEO AND COMMENT----------------//
      
-
      db.image.hasMany(db.comment,{
         foreignKey:'commentId',
          constraints:false,
@@ -88,6 +88,7 @@ const sequelize = new Sequelize('sequelize','root', '', {
 
       
      //-------tagTaggable with image and videos---------//
+     
      //image to tag:
     db.image.belongsToMany(db.tags,{
         through:{
